@@ -1,4 +1,4 @@
-# golang-study
+# Golang-Study
 《Go语言的学习历程全记录》
 
 **`时间：2021-10-08 21:00`**  
@@ -31,7 +31,7 @@ Go在谷歌：以软件工程为目的的语言设计：https://www.oschina.net/
 #### 2、安装Go语言  
 2.1、Go源码安装  
 2.2、Go标准包安装  
-Go下载：https://golang.org/dl/，选择对应系统平台下载安装包并安装好  
+Go下载，选择对应系统平台下载安装包并安装好：https://golang.org/dl/  
 2.3、第三方工具安装  
 
 #### 3、Go环境变量与工作目录  
