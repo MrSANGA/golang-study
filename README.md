@@ -63,7 +63,11 @@ godoc建立本地文档：godoc -http=:8080 建立本地官网，新版本貌似
 安装gosublime及指令（破解版可能无法安装）：  
 《Ubuntu配置Go语言开发环境（Sublime Text+GoSublime）》：https://my.oschina.net/Obahua/blog/110767  
 《Win10下sublime text3搭建go语言开发环境--工具篇》：https://www.jianshu.com/p/90d76d129929  
-注：编辑器配置还有点问题，待解决  
+解决编辑器报错：actions: RunCmd, error: margo has not started after 0.200s，参考：《Sublime Text 3 安装Go语言相关插件gosublime时 搜不到gosublime》https://www.cnblogs.com/chengxuyuan326260/p/10095914.html  
+`到这里已经安装完成，如果想进阶使用，在ctrl + B 调出的控制台运行代码，还需要配置一下margo文件：`  
+`1·在 Browse Package打开的路径下，找到GoSublime/src目录，之中新建margo目录`  
+`2·把 GoSublime/src/margo.sh/extension-example/extension/extension-example.go这个文件，复制到刚刚新建的目录margo下，并改名为margo.go`  
+`如果不做这两步，用gosublime执行go build等命令会如上错误。`  
 
 #### 6、创建hello.go文件，写Go的第一个Hello world文件：  
 ```go  
