@@ -58,8 +58,7 @@ go doc 查看文档
 godoc建立本地文档：godoc -http=:8080 建立本地官网，新版本貌似已废弃，Go 1.5是一个重要的版本，包括主要实现结构调整。尽管这样，我们期待绝大多数程序可以像之前一样编译、运行（因该版本仍遵守Go 1兼容性承诺），新的go doc命令（不同于godoc）只为命令行使用。
 
 #### 5、IDE编辑器/Sublime Text安装与配置：  
-使用 Sublime Text  
-Sublime Text  
+使用Sublime Text   
 下载Sublime Text：官方网站：http://www.sublimetext.com/  
 安装gosublime及指令（破解版可能无法安装）：  
 《Ubuntu配置Go语言开发环境（Sublime Text+GoSublime）》：https://my.oschina.net/Obahua/blog/110767  
@@ -67,6 +66,7 @@ Sublime Text
 注：编辑器配置还有点问题，待解决  
 
 #### 6、创建hello.go文件，写Go的第一个Hello world文件：  
+```go  
 package main  
 import (  
     "fmt"  
@@ -74,4 +74,6 @@ import (
 func main() {  
     fmt.Println("Hello World")  
 }  
+```
+
 
