@@ -80,4 +80,69 @@ func main() {
 }  
 ```
 
+**`时间：2021-10-12 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 
 
+### 二、Go基础知识  
+#### 2.1、课堂笔记的使用方法  
+https://github.com/Unknwon/go-fundamental-programming  
+具体定位到课时：https://github.com/unknwon/go-fundamental-programming/blob/master/lectures/lecture1.md  
+课程大纲给出了知识点讲解的时间点，方便快速定位  
+补充说明在教程录制完成后根据反馈进行修正或补充  
+相关链接给出了课件中所有用到的链接，方便在看视频的同时打开  
+
+#### 2.2、Go内置关键字和注释方法  
+Go内置关键字（25个均为小写）  
+break        default           func        interface        select  
+case          defer              go           map               struct  
+chan          else                goto       package        switch  
+const         fallthrough    if             range             type  
+continue   for                  import    return             var  
+Go注释方法  
+// ：单行注释  
+/* */：多行注释  
+
+#### 2.3、Go程序的一般结构  
+basic_structure.go  
+Go程序是通过package来组织的（与python类似）  
+只有package名称为main的包可以包含main函数  
+一个可执行程序 有且仅有 一个main包  
+通过import关键字来导入其它非main包  
+通过const关键字来进行常量的定义  
+通过在函数体外部使用 var 关键字来进行全局变量的声明与赋值  
+通过type关键字来进行结构(struct)或接口(interface)的声明  
+通过func关键字来进行函数的声明  
+
+```go 
+//当前程序的包名
+package main
+
+//导入其他的包
+import (
+    "fmt"
+)
+
+//全局变量的声明与赋值
+var name = "gopher"
+
+//一般类型的声明
+type newType int
+
+//结构的声明
+type gopher struct{}
+
+//接口的声明
+type golang interface{}
+
+//由main函数作为程序的入口点启动
+func main(){
+    fmt.Println("Hello world!你好，世界！")
+}
+``` 
+
+#### 2.4、包的导入
+导入包之后，就可以使用格式<PackageName>.<FuncName>
+来对包中的函数进行调用
+如果导入包之后 未调用 其中的函数或者类型将会报出编译错误：
+imported and not used:"io"
