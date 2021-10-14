@@ -141,8 +141,77 @@ func main(){
 }
 ``` 
 
-#### 2.4、包的导入
-导入包之后，就可以使用格式<PackageName>.<FuncName>
-来对包中的函数进行调用
-如果导入包之后 未调用 其中的函数或者类型将会报出编译错误：
-imported and not used:"io"
+#### 2.4、包的导入  
+导入包之后，就可以使用格式<PackageName>.<FuncName>  
+来对包中的函数进行调用  
+如果导入包之后 未调用 其中的函数或者类型将会报出编译错误：  
+imported and not used:"io"  
+
+**`时间：2021-10-14 21:00`**  
+**`用时：40分钟`**  
+**`平台：Windows 10`** 
+    
+#### 2.5、package别名与省略调用  
+当使用第三方包时，包名可能会非常接近或者相同，此时就可以使用别名来进行区别和调用  
+```go  
+import (  
+    io "fmt"  
+)  
+```
+    
+//使用别名调用包  
+```go  
+io.Println("Hello world!")  
+```
+    
+省略调用  
+不建议使用，易混淆  
+不可以和别名同时使用  
+```go  
+import (  
+    . "fmt"  
+)  
+fun main() {  
+    //使用省略调用  
+    Println("Hello world!")  
+}  
+```
+    
+#### 2.6、可见性规则  
+Go语言中，使用 大小写 来决定该 常量、变量、类型、接口、结构或函数 是否可以被外部包所调用：根据约定，函数名首字母 小写 即为private  
+```go  
+func getField()  
+```
+    
+函数名首字母 大写 即为public  
+```go  
+func Printf()  
+```
+    
+#### 2.7、课堂作业布置  
+既然导入多个包时可以进行简写，那么声明多个 常量、全局变量或一般类型（非接口、非结构）是否也可以用同样的方法呢？  
+请动手验证。  
+试验结果证明可以运行  
+```go  
+//常量的定义  
+const (  
+    PI  = 3.14  
+    const1 = "1"  
+    const2 = 2  
+    const3 = 3  
+)  
+//全局变量的声明与赋值  
+var (  
+    name = "gopher"  
+    name1 = "1"  
+    name2 = 2  
+    name3 = 3  
+)  
+//一般类型声明  
+type (  
+    newType int  
+    type1 float32  
+    type2 string  
+    type3 byte  
+)  
+```
