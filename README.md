@@ -511,3 +511,94 @@ func main() {
 ```  
 		
 		
+**`时间：2021.10.28 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`**
+#### 5.5、switch选择语句  
+选择语句switch  
+可以使用任何类型或表达式作为条件语句  
+不需要写break，一旦条件符合自动终止  
+如希望继续执行下一个case，需使用fallthrough语句  
+支持一个初始化表达式（可以是并行方式），右侧需跟分号  
+左大括号必须和条件语句在同一行  
+```go  
+func main() {  
+    a := 1  
+    switch a {  
+        case 0:  
+          fmt.Println("a=0")  
+        case 1:  
+          fmt.Println("a=1")  
+    }  
+    fmt.Println(a)  
+}  
+
+func main() {  
+    a := 1  
+    switch {  
+        case a >= 0:  
+          fmt.Println("a=0")  
+        case a >= 1:  
+          fmt.Println("a=1")  
+    }  
+    fmt.Println(a)  
+}  
+
+func main() {  
+    switch a := 1; {  
+        case a >= 0:  
+           fmt.Println("a=0")  
+           fallthrough  
+        case a >= 1:  
+           fmt.Println("a=1")  
+    }  
+}  
+```  
+
+#### 5.6、跳转语句  
+跳转语句goto, break, continue  
+三个语法都可以配合标签使用  
+标签名区分大小写，若不使用会造成编译错误  
+Break与continue配合标签可用于多层循环的跳出  
+Goto是调整执行位置，与其它2个语句配合标签的结果并不相同  
+```go  
+func main() {  
+LABEL:  
+    for {  
+        for i:= 0; i < 10; i++ {  
+            if i > 2 {  
+                break LABEL  
+            } else {  
+                fmt.Println(i)  
+            }  
+        }  
+    }  
+}  
+
+func main() {  
+LABEL:  
+     for i := 0; i< 10; i++ {  
+        for {  
+            fmt.Println(i)  
+            continue LABEL  
+        }  
+     }  
+}  
+```  
+
+5.7、课堂作业布置  
+将下图中的continue替换成goto，程序运行的结果还一样吗？  
+请尝试并思考为什么。  
+```go  
+func main() {  
+LABEL:  
+    for i := 0; i < 10; i++ {  
+        for {  
+            fmt.Println(i)  
+            continue LABEL  
+        }  
+    }  
+}  
+```  
+		
+		
