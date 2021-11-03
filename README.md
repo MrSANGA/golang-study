@@ -643,6 +643,59 @@ func main() {
 ```  
 		
 		
+**`时间：2021-11-02 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 
+#### 6.4、数组之间的比较  
+```go  
+func main() {  
+    a := [2]int{1, 2}  
+    b := [2]int{1, 3}  
+    fmt.Println(a == b)  
+}  
+```  
+
+#### 6.5、使用new创建数组  
+```go  
+func main() {  
+    a := [10]int{}  
+    b[1] = 2  
+    fmt.Println(a)  
+    p := new([10]int)  
+    p[1] = 2  
+    fmt.Println(p)  
+}  
+```  
+
+#### 6.6、多维数组  
+```go  
+func main() {  
+    a := [2][3]int{  
+        {1, 1, 1}  
+        {2, 2, 2}  
+    }  
+    fmt.Println(a)  
+}  
+```  
+		
+#### 6.7、冒泡排序  
+```go  
+func main() {  
+    a := [...]int{5, 2, 6, 3, 9}  
+    fmt.Println(a)  
+
+    num := len(a)  
+    for i := 0; i < num; i++ {  
+        for j := i + 1; j < num; j++ {  
+            if a[i] < a[j] {  
+                temp := a[i]  
+                a[i] = a[j]  
+                a[j] = temp  
+            }  
+        }  
+    }  
+}  
+```  
 		
 		
 		
