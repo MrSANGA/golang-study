@@ -697,5 +697,65 @@ func main() {
 }  
 ```  
 		
-		
-		
+
+**`时间：2021-11-04 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 
+#### 七、切片slice  
+#### 7.1、知识回顾  
+回顾上堂课的知识要点及课堂作业解答  
+
+#### 7.2、slice概述  
+切片Slice  
+其本身并不是数组，它指向底层的数组  
+作为变长数组的替代方案，可以关联底层数组的局部或全部  
+为引用类型  
+可以直接创建或从底层数组获取生成  
+使用len()获取元素个数，cap()获取容量  
+一般使用make()创建  
+如果多个slice指向相同底层数组，其中一个的值改变会影响全部  
+make([]T, len, cap)  
+其中cap可以省略，则和len的值相同  
+len表示存数的元素个数，cap表示容量  
+```go  
+func main() {  
+    var s1 []int  
+    fmt.Println(s1)  
+}  
+func main() {  
+    a := [10]int  
+    fmt.Println(a)  
+    s1 := a[9]  
+    fmt.Println(s1)  
+}  
+func main() {  
+    a := [10]int  
+    fmt.Println(a)  
+    s1 := a[5:10]  
+    s2 := a[5:len(a)]  
+    s3 := a[5:]  
+    s4 := a[:5]  
+    fmt.Println(s1)  
+    fmt.Println(s2)  
+    fmt.Println(s3)  
+    fmt.Println(s4)  
+}  
+```  
+
+#### 7.3、创建slice  
+```go  
+func main() {  
+    s1 := make([]int, 3, 10)  
+    fmt.Println(len(s1), cap(s1))  
+}  
+func main() {  
+    a := []byte{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'}  
+    sb := a[2:5]  
+    sc := a[3:5]  
+    fmt.Println(string(sa))  
+    fmt.Println(string(sc))  
+}  
+```  
+	
+			  
+			  
