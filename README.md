@@ -757,5 +757,53 @@ func main() {
 }  
 ```  
 	
+**`时间：2021-11-08 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 	  
+#### 7.4、reslice概述  
+Reslice  
+Reslice时索引以被slice的切片为准  
+索引不可以超过被slice的切片的容量cap()值  
+索引越界不会导致底层数组的重新分配而是引发错误  
+```go  
+func main() {  
+    a := []byte{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k'}  
+    sa := a[2:5]  
+    sb := sa[1:3]  
+    fmt.Println(string(sb))  
+}  
+```  
+
+#### 7.5、append()与slice  
+Append  
+可以在slice尾部追加元素  
+可以将一个slice追加在另一个slice尾部  
+如果最终长度未超过追加到slice的容量则返回原始slice  
+如果超过追加到的slice的容量则将重新分配数组并拷贝原始数据  
+```go  
+func main() {  
+    s1 := make([]int, 3, 6)  
+    fmt.Printf("%p\n", s1)  
+    s1 = append(s1, 1, 2, 3)  
+    fmt.Printf("%v %p\n", s1, s1)  
+    s1 = append(s1, 1, 2, 3)  
+    fmt.Printf("%v %p\n", s1, s1)  
+}  
+```  
+
+#### 7.6、copy()与slice  
+Copy  
+```go  
+func main() {  
+    s1 := []int{1, 2, 3, 4, 5, 6}  
+    s2 := []int{7, 8, 9}  
+    copy(s1, s2)  
+    fmt.Println(s1)  
+}  
+```  
+
+#### 7.7、课堂作业布置  
+如何将一个slice指向一个完整的底层数组，而不是底层数组的一部分？请思考并尝试  
 			  
 			  
+			  			  
