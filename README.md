@@ -806,4 +806,67 @@ func main() {
 如何将一个slice指向一个完整的底层数组，而不是底层数组的一部分？请思考并尝试  
 			  
 			  
-			  			  
+**`时间：2021-11-09 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 
+#### 八、map
+#### 8.1、知识回顾  
+回顾上堂课的知识要点及课堂作业解答  
+```go  
+func main() {  
+    s1 := []int{1, 2, 3, 4, 5}  
+    s2 := s1[:]  
+    fmt.Println(s2)  
+}  
+```  
+
+#### 8.2、map概述  
+map  
+类似其它语言中的哈希表或者字典，以key-value形式存储数据  
+Key必须是支持==或!=比较运算的类型，不可以是函数、map或slice  
+Map查找比线性搜索快很多，但比使用索引访问数据的类型慢100倍  
+Map使用make()创建，支持 := 这种简写方式  
+make([keyType]valueType, cap)，cap表示容量，可省略  
+超出容量时会自动扩容，但尽量提供一个合理的初始值  
+使用len()获取元素个数  
+键值对不存在时自动添加，使用delete()删除某键值对  
+使用 for range 对map和slice进行迭代操作  
+```go  
+func main() {  
+    var m map[int]string  
+    m = map[int]string{}  
+    m = make(map[int]string)  
+    fmt.Println(m)  
+}  
+```  
+
+#### 8.3、简单map的创建与使用  
+```go  
+func main() {  
+    m := make(map[int]string)  
+    m[1] = "OK"  
+    delete(m, 1)  
+    a := m[1]  
+    fmt.Println(m)  
+    fmt.Pringln(a)  
+}  
+```  
+
+#### 8.4、复杂map与键值对操作  
+```go  
+func main() {  
+    var m map[int]map[int]string  
+    m = make(map[int]map[int]string)  
+    m[1] = make(map[int]string)  
+    m[1][1] = "OK"  
+    a, ok := m[2][1]  
+    if !ok {  
+        m[2] = make(make[int]string)  
+    }  
+    m[2][1] = "GOOD"  
+    a = m[2][1]  
+    fmt.Println(a, ok)  
+}  
+```  
+			  
+			  
