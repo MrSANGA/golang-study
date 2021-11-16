@@ -868,5 +868,59 @@ func main() {
     fmt.Println(a, ok)  
 }  
 ```  
+		
 			  
+**`时间：2021-11-15 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 
+8.5、map与slice的迭代操作  
+```go  
+func main() {  
+    sm := make([]map[int]string, 5)  
+    for _, v := range sm {  
+        v = make(map[int]string, 1)  
+        v[1] = "OK"  
+        fmt.Println(v)  
+    }  
+}  
+```  
+
+8.6、元素类型为map的slice
+```go  
+func main() {  
+    sm := make([]map[int]string, 5)  
+    for i := range sm {  
+        sm[i] = make(map[int]string, 1)  
+        sm[i] = "OK"  
+        fmt.Println(v)  
+    }  
+    fmt.Println(sm)  
+}  
+```  
+
+8.7、map的间接排序（导入包“sort”）  
+```go  
+func main() {  
+    m := map[int]string{1: "a", 2: "b", 3: "c", 4: "d", 5: "e"}  
+    s := make([]int, len(m))  
+    i := 0  
+    for k,_:=range m{  
+        s[i] = k  
+        i++  
+    }  
+    sort.Ints(s)  
+    fmt.Println(sm)  
+}  
+```  
+
+8.8、课堂作业布置  
+根据在 for range 部分讲解的知识，尝试将类型为map[int]string的键和值进行交换，变成类型map[string]int程序正确运行后应输出如下结果：  
+```go  
+func main() {  
+    m1 := map[int]string{1: "a", 2: "b", 3: "c"}  
+    m2 := map[string]int{"a": 1, "b": 2, "c": 3}  
+}    
+```  
+		
+		
 			  
