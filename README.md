@@ -873,7 +873,7 @@ func main() {
 **`时间：2021-11-15 21:00`**  
 **`用时：1小时`**  
 **`平台：Windows 10`** 
-8.5、map与slice的迭代操作  
+#### 8.5、map与slice的迭代操作  
 ```go  
 func main() {  
     sm := make([]map[int]string, 5)  
@@ -885,7 +885,7 @@ func main() {
 }  
 ```  
 
-8.6、元素类型为map的slice
+#### 8.6、元素类型为map的slice
 ```go  
 func main() {  
     sm := make([]map[int]string, 5)  
@@ -898,7 +898,7 @@ func main() {
 }  
 ```  
 
-8.7、map的间接排序（导入包“sort”）  
+#### 8.7、map的间接排序（导入包“sort”）  
 ```go  
 func main() {  
     m := map[int]string{1: "a", 2: "b", 3: "c", 4: "d", 5: "e"}  
@@ -913,7 +913,7 @@ func main() {
 }  
 ```  
 
-8.8、课堂作业布置  
+#### 8.8、课堂作业布置  
 根据在 for range 部分讲解的知识，尝试将类型为map[int]string的键和值进行交换，变成类型map[string]int程序正确运行后应输出如下结果：  
 ```go  
 func main() {  
@@ -922,5 +922,67 @@ func main() {
 }    
 ```  
 		
-		
+
+**`时间：2021-11-16 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 
+#### 九、函数 function  
+#### 9.1、知识回顾  
+回顾上堂课的知识要点及课堂作业解答  
+```go  
+func main() {  
+    m1 := map[int]string{1: "a", 2: "b", 3: "c"}  
+    fmt.Println(m1)  
+    m2 := make(map[string]int)  
+    for k, v := range m1 {  
+        m2[v] = k  
+    }  
+    fmt.Println(m2)  
+}  
+```  
+
+#### 9.2、函数概述  
+Go 函数 不支持 嵌套、重载和默认参数  
+但支持以下特性：         
+无需声明原型、不定长度变参、多返回值、命名返回值参数  
+匿名函数、闭包  
+定义函数使用关键字 func，且左大括号不能另起一行  
+函数也可以作为一种类型使用  
+```go  
+func A(a int, b string) (int, string) {  
+  
+}  
+```  
+
+#### 9.3、函数的定义与使用  
+```go  
+func A() (int, int, int) {  
+    a, b, c = 1, 2, 3  
+    return a, b, c  
+}  
+```  
+
+#### 9.4、不定长变参  
+```go  
+func A(a ...int) (int, int, int) {  
+    a, b, c = 1, 2, 3  
+    return a, b, c  
+}  
+```  
+
+#### 9.5、传递值类型和引用类型  
+```go  
+func main() {  
+    s1 := []int{1, 2, 3, 4}  
+    A(s1)  
+    fmt.Println(s1)  
+}  
+func A(s []int) {  
+    s[0] = 5  
+    s[1] = 6  
+    s[2] = 7  
+    s[3] = 8  
+    fmt.Println(s)  
+}  
+```  
 			  
