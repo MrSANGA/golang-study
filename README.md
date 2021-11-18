@@ -986,3 +986,95 @@ func A(s []int) {
 }  
 ```  
 			  
+**`时间：2021-11-17 21:00`**  
+**`用时：1小时`**  
+**`平台：Windows 10`** 		  
+#### 9.6、匿名函数与闭包  
+```go  
+func main() {  
+    a := func() {  
+        fmt.Println("Func A")     
+    }  
+    a();  
+}  
+
+func main() {  
+    f := closure(10)  
+    fmt.Println(f(1))  
+    fmt.Println(f(2))  
+}  
+func closure(x int) func(int) int {  
+    return func(y int) int {  
+        fmt.Printf("%p", &x)  
+        return x + y  
+    }  
+}  
+```  
+
+#### 9.7、defer用法  
+defer的执行方式类似其它语言中的析构函数，在函数体执行结束后按照调用顺序的相反顺序逐个执行  
+即使函数发生严重错误也会执行  
+支持匿名函数的调用  
+常用于资源清理、文件关闭、解锁以及记录时间等操作  
+通过与匿名函数配合可在return之后修改函数计算结果  
+如果函数体内某个变量作为defer时匿名函数的参数，则在定义defer时即已经获得了拷贝，否则则是引用某个变量的地址  
+```go  
+func main() {  
+    for i := 0; i < 3; i++ {  
+        defer fmt.Println(i)  
+    }  
+}  
+func main() {  
+    for i := 0; i < 3; i++ {  
+        defer func() {  
+            fmt.Println(i)  
+        }()  
+    }  
+}  
+```  
+
+#### 9.8、panic与recover  
+Go 没有异常机制，但有 panic/recover 模式来处理错误  
+Panic 可以在任何地方引发，但recover只有在defer调用的函数中有效  
+```go  
+func main() {  
+    A()  
+    B()  
+    C()  
+}  
+func A() {  
+    fmt.Println("Func A")  
+}  
+func B() {  
+    defer func() {  
+        if err := recover(); err != nil {  
+            fmt.Println("Recover in B")  
+        }  
+    }  
+    panic("Panic in B")  
+}  
+func C() {  
+    fmt.Println("Func C")  
+}  
+```  
+
+#### 9.9、课堂作业布置  
+运行以下程序并分析输出结果。  
+```go  
+func main() {  
+    var fs = [4]func(){}  
+
+    for i := 0; i < 4; i++ {  
+        defer fmt.Println("defer i = ", i)  
+        defer func() { fmt.Println("defer_closure i = ", i) }()  
+        fs[i] = func() { fmt.Println("closure i = ", i) }  
+    }  
+
+    for _, f := range fs {  
+        f()  
+    }  
+}  
+```  
+
+		
+		
